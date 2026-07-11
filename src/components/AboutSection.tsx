@@ -25,7 +25,7 @@ export default function AboutSection() {
         </ScrollReveal>
 
         <div className="mx-auto max-w-2xl space-y-6 text-lg leading-relaxed text-muted">
-          {about.paragraphs.map((p, i) => (
+          {about.intro.map((p, i) => (
             <ScrollReveal key={i} delay={0.2 + i * 0.1}>
               <p>{p}</p>
             </ScrollReveal>

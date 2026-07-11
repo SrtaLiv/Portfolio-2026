@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteData } from "@/data/portfolio";
 
 export default function Navbar() {
   const { nav } = siteData;
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,27 +17,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-    );
-
-    nav.links.forEach((link) => {
-      const id = link.href.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, [nav.links]);
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -62,19 +43,19 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a
-          href="#"
+        <Link
+          href="/"
           className="text-sm font-bold tracking-tight text-foreground transition-colors hover:text-accent focus-visible:rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           {nav.name}
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden items-center gap-1 md:flex">
           {nav.links.map((link) => {
-            const isActive = activeSection === link.href;
+            const isActive = pathname === link.href;
             return (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className={`relative rounded-lg px-3 py-2 text-sm transition-colors ${
@@ -87,7 +68,7 @@ export default function Navbar() {
                 {isActive && (
                   <span className="absolute bottom-1 left-3 right-3 h-px bg-accent" />
                 )}
-              </a>
+              </Link>
             );
           })}
           <a
@@ -119,9 +100,9 @@ export default function Navbar() {
         >
           <div className="flex flex-col gap-1">
             {nav.links.map((link) => {
-              const isActive = activeSection === link.href;
+              const isActive = pathname === link.href;
               return (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
@@ -132,7 +113,7 @@ export default function Navbar() {
                   }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               );
             })}
             <a

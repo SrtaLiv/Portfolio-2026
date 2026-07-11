@@ -1,7 +1,39 @@
 "use client";
 
+import Link from "next/link";
 import { siteData } from "@/data/portfolio";
 import Avatar from "./Avatar";
+
+function CtaLink({
+  href,
+  className,
+  children,
+}: {
+  href: string;
+  className: string;
+  children: React.ReactNode;
+}) {
+  const isExternal = href.startsWith("http://") || href.startsWith("https://");
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  );
+}
 
 export default function Hero() {
   const { hero } = siteData;
@@ -39,17 +71,12 @@ export default function Hero() {
           className="animate-fade-in-up flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row"
           style={{ animationDelay: "0.5s" }}
         >
-          <a href={hero.primaryCta.href} className="btn-primary">
+          <CtaLink href={hero.primaryCta.href} className="btn-primary">
             {hero.primaryCta.text}
-          </a>
-          <a
-            href={hero.secondaryCta.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
-          >
+          </CtaLink>
+          <CtaLink href={hero.secondaryCta.href} className="btn-outline">
             {hero.secondaryCta.text}
-          </a>
+          </CtaLink>
         </div>
 
         <div

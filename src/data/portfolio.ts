@@ -2,11 +2,10 @@ export const siteData = {
   nav: {
     name: "Olivia Todesco",
     links: [
-      { label: "Versiones", href: "#versions" },
-      { label: "Proyectos", href: "#projects" },
-      { label: "Recorrido", href: "#journey" },
-      { label: "Sobre mí", href: "#about" },
-      { label: "Contenido", href: "#content" },
+      { label: "Inicio", href: "/" },
+      { label: "Sobre mí", href: "/about" },
+      { label: "Proyectos", href: "/proyectos" },
+      { label: "Contacto", href: "/contacto" },
     ],
     cta: { label: "Hablemos", href: "https://calendly.com/nebulasolutions23/30min" },
   },
@@ -16,7 +15,7 @@ export const siteData = {
     title: ["Construyo productos", "que conectan personas."],
     description:
       "Soy Olivia Todesco. Desarrollo software, diseño interfaces, fundé Nebula Solutions y comparto lo que aprendo. Todo es parte del mismo sistema.",
-    primaryCta: { text: "Explorar mi universo", href: "#versions" },
+    primaryCta: { text: "Conocer mi historia", href: "/about" },
     secondaryCta: { text: "Ver proyectos en Nebula", href: "https://nebulasolutions.com.ar/" },
   },
 
@@ -38,7 +37,7 @@ export const siteData = {
           "Disfruto del proceso de pasar de cero a algo que funciona, se entiende y puede crecer.",
         ],
         tags: ["Laravel", "React", "Next.js", "Tailwind", "Node", "MySQL", "AWS", "Docker"],
-        cta: { text: "Ver proyectos", href: "#projects" },
+        cta: { text: "Ver proyectos", href: "/proyectos" },
       },
       {
         id: "cofounder",
@@ -66,7 +65,7 @@ export const siteData = {
           "Mezclo herramientas de diseño con criterio técnico: lo que diseño puedo construirlo, y lo que construyo lo diseño pensando en quien lo va a usar.",
         ],
         tags: ["Figma", "Design Systems", "Wireframes", "Prototipos", "User Flows"],
-        cta: { text: "Ver proyectos", href: "#projects" },
+        cta: { text: "Ver proyectos", href: "/proyectos" },
       },
       {
         id: "creator",
@@ -90,7 +89,7 @@ export const siteData = {
           "Actuar me enseñó a comunicar, escuchar y contar historias. Hoy uso eso para presentar ideas, vender proyectos y hablar de tecnología de forma más humana.",
         ],
         tags: ["Producto", "Validación", "Lanzamiento", "Storytelling"],
-        cta: { text: "Ver recorrido", href: "#journey" },
+        cta: { text: "Ver recorrido", href: "/about" },
       },
     ],
   },
@@ -238,11 +237,76 @@ export const siteData = {
   about: {
     title: "Sobre mí",
     quote: "La tecnología sirve cuando mejora la vida de alguien.",
-    paragraphs: [
+    intro: [
       "Siempre me gustó construir. Antes eran historias. Después páginas web. Hoy son empresas, productos y contenido.",
       "No creo en separar el código del diseño, el producto del negocio, o la técnica de la comunicación. Cuanto más conectadas están esas partes, mejor resultado se obtiene.",
-      "Me interesa entender el problema antes de elegir la solución. Trabajar con founders, CEOs y equipos que quieren construir algo real. Y aprender algo nuevo en cada proyecto.",
     ],
+    story: {
+      title: "Cómo llegué hasta acá",
+      paragraphs: [
+        "Mi camino empezó lejos del código. De chica me gustaba crear historias, entender a las personas y encontrar formas de comunicar ideas. Esa curiosidad terminó llevándome a la tecnología, donde descubrí que construir productos digitales no era tan diferente: se trata de entender un problema, diseñar una solución y contarla de forma clara.",
+        "En 2021 escribí mis primeras líneas de código. No fue amor a primera vista, pero sí una fascinación creciente: me di cuenta de que podía crear cosas que otras personas usaban de verdad. Ese año marco el inicio de una obsesión por aprender en público.",
+        "Un año después empecé a compartir lo que aprendía en redes. Enseñar me obligó a entender mejor, a simplificar conceptos y a conectar con una comunidad de personas que también estaban construyendo. Ese hábito de aprender en público se convirtió en el motor de todo lo que vino después.",
+        "En 2025, junto a Santiago, Tomás y Luciano, fundamos Nebula Solutions. Lo que empezó como un grupo de desarrolladores que querían hacer proyectos interesantes, se convirtió en una empresa que ayuda a startups y compañías de Argentina, España, Francia y Estados Unidos a transformar procesos en software.",
+        "Hoy sigo programando, diseñando, liderando proyectos y creando contenido. También estoy construyendo mis propios productos, como Tourly, donde pongo en práctica todo lo aprendido trabajando con clientes.",
+      ],
+    },
+    values: {
+      title: "Cómo trabajo",
+      items: [
+        {
+          title: "Entender antes de construir",
+          description:
+            "No me interesa escribir código por escribir. Primero entiendo el problema, el negocio y las personas que van a usar el producto.",
+        },
+        {
+          title: "Diseño y código van juntos",
+          description:
+            "Lo que diseño lo puedo construir, y lo que construyo lo diseño pensando en quien lo va a usar. No separo una disciplina de la otra.",
+        },
+        {
+          title: "Aprender en público",
+          description:
+            "Crear contenido no es solo compartir lo que sé: es una forma de aprender mejor, conectar con otros builders y construir con honestidad.",
+        },
+        {
+          title: "Pensar en escala",
+          description:
+            "Me gusta que las soluciones no solo funcionen hoy, sino que puedan crecer sin derrumbarse mañana.",
+        },
+      ],
+    },
+    skills: {
+      title: "Herramientas y habilidades",
+      categories: [
+        {
+          name: "Desarrollo",
+          items: ["Laravel", "React", "Next.js", "TypeScript", "Node.js", "MySQL", "AWS", "Docker"],
+        },
+        {
+          name: "Diseño",
+          items: ["Figma", "Design Systems", "Wireframes", "Prototipos", "User Flows", "UX Research"],
+        },
+        {
+          name: "Producto & Negocio",
+          items: ["Discovery", "Validación", "MVP", "Storytelling", "Liderazgo de equipo", "Comunicación con clientes"],
+        },
+      ],
+    },
+    personal: {
+      title: "Algunos datos",
+      items: [
+        { label: "Ubicación", value: "Argentina" },
+        { label: "Idiomas", value: "Español e inglés" },
+        { label: "Disponibilidad", value: "Abierta a proyectos y colaboraciones" },
+        { label: "Rol principal", value: "Co-founder & Full Stack Developer en Nebula Solutions" },
+      ],
+    },
+    cta: {
+      title: "¿Trabajamos juntos?",
+      description: "Si tenés una idea, un negocio o simplemente querés charlar sobre tecnología, escribime.",
+      button: { text: "Agendar una llamada", href: "https://calendly.com/nebulasolutions23/30min" },
+    },
   },
 
   content: {
@@ -253,6 +317,7 @@ export const siteData = {
   contact: {
     title: "Si llegaste hasta acá, probablemente tengamos mucho de qué hablar.",
     subtitle: "Si tenés una idea, un negocio o simplemente querés charlar sobre tecnología, escribime.",
+    email: "hello@oliviatodesco.com",
     cta: { text: "Agendar una llamada", href: "https://calendly.com/nebulasolutions23/30min" },
     social: [
       { name: "Instagram", href: "https://www.instagram.com/oliviatodesco/" },
