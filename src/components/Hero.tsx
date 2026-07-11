@@ -1,21 +1,26 @@
 "use client";
 
 import { siteData } from "@/data/portfolio";
+import Avatar from "./Avatar";
 
 export default function Hero() {
   const { hero } = siteData;
 
   return (
-    <section className="relative flex min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden px-6 py-24 text-center">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -left-1/4 top-1/4 h-96 w-96 rounded-full bg-accent-violet-soft blur-3xl" />
-        <div className="absolute -right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-accent-warm-soft blur-3xl" />
-      </div>
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-6 pb-12 pt-32 text-center">
+      <div className="mx-auto max-w-4xl space-y-8">
+        <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+          <Avatar />
+        </div>
 
-      <div className="max-w-4xl space-y-8">
-        <span className="eyebrow">{hero.eyebrow}</span>
+        <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <span className="eyebrow">{hero.eyebrow}</span>
+        </div>
 
-        <h1 className="space-y-2 text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+        <h1
+          className="animate-fade-in-up text-balance text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+          style={{ animationDelay: "0.3s" }}
+        >
           {hero.title.map((line, i) => (
             <span key={i} className="block">
               {line}
@@ -23,30 +28,50 @@ export default function Hero() {
           ))}
         </h1>
 
-        <div className="mx-auto max-w-2xl space-y-3 text-lg leading-relaxed text-text-muted sm:text-xl">
-          {hero.subtitle.map((line, i) => (
-            <p
-              key={i}
-              className={i === 2 ? "pt-2 font-semibold text-accent-warm" : ""}
-            >
-              {line}
-            </p>
-          ))}
-        </div>
+        <p
+          className="animate-fade-in-up mx-auto max-w-2xl text-lg leading-relaxed text-muted sm:text-xl"
+          style={{ animationDelay: "0.4s" }}
+        >
+          {hero.description}
+        </p>
 
-        <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
+        <div
+          className="animate-fade-in-up flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row"
+          style={{ animationDelay: "0.5s" }}
+        >
           <a href={hero.primaryCta.href} className="btn-primary">
             {hero.primaryCta.text}
           </a>
-          <a href={hero.secondaryCta.href} className="btn-outline">
+          <a
+            href={hero.secondaryCta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+          >
             {hero.secondaryCta.text}
           </a>
         </div>
+
+        <div
+          className="animate-fade-in-up flex items-center justify-center gap-2 pt-4"
+          style={{ animationDelay: "0.6s" }}
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+          </span>
+          <span className="text-sm text-muted">Disponible para proyectos · Co-founder en Nebula</span>
+        </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float text-text-muted">
-        <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
-        <span className="ml-2">↓</span>
+      <div
+        className="animate-fade-in absolute bottom-10 left-1/2 -translate-x-1/2 text-muted"
+        aria-hidden="true"
+        style={{ animationDelay: "1s" }}
+      >
+        <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-border p-1.5">
+          <div className="h-1.5 w-1 rounded-full bg-muted animate-mouse-scroll" />
+        </div>
       </div>
     </section>
   );

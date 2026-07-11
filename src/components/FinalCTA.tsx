@@ -1,31 +1,43 @@
 import { siteData } from "@/data/portfolio";
 import SocialLinks from "./SocialLinks";
+import ScrollReveal from "./ScrollReveal";
 
 export default function FinalCTA() {
   const { contact } = siteData;
 
   return (
-    <section className="w-full px-6 py-24">
-      <div className="card mx-auto max-w-3xl p-8 text-center sm:p-12">
-        <h2 className="text-3xl font-bold text-foreground sm:text-5xl">{contact.title}</h2>
-        <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-text-muted">
-          {contact.subtitle}
-        </p>
+    <section className="section">
+      <div className="mx-auto max-w-3xl text-center">
+        <ScrollReveal>
+          <h2 className="text-balance text-3xl font-semibold leading-snug text-foreground sm:text-5xl">
+            {contact.title}
+          </h2>
+        </ScrollReveal>
 
-        <div className="mt-8">
-          <a
-            href={contact.cta.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-warm text-base"
-          >
-            {contact.cta.text} →
-          </a>
-        </div>
+        <ScrollReveal delay={0.1}>
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted">
+            {contact.subtitle}
+          </p>
+        </ScrollReveal>
 
-        <div className="mt-10">
-          <SocialLinks />
-        </div>
+        <ScrollReveal delay={0.2}>
+          <div className="mt-10">
+            <a
+              href={contact.cta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-base"
+            >
+              {contact.cta.text} →
+            </a>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.3}>
+          <div className="mt-12">
+            <SocialLinks />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -2,34 +2,62 @@ import Image from "next/image";
 import { getLatestVideos } from "@/lib/youtube";
 
 export default async function LatestVideos() {
-  const videos = await getLatestVideos(3);
+  let videos: Awaited<ReturnType<typeof getLatestVideos>> = [];
+  let error = false;
+
+  try {
+    videos = await getLatestVideos(3);
+  } catch {
+    error = true;
+  }
+
+  if (error) {
+    return (
+      <div className="rounded-2xl border border-border bg-surface p-8 text-center">
+        <p className="text-muted">No pudimos cargar los últimos videos.</p>
+        <a
+          href="https://www.youtube.com/@oliviatodesco"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost mt-4 inline-flex"
+        >
+          Ver canal en YouTube ↗
+        </a>
+      </div>
+    );
+  }
 
   if (videos.length === 0) return null;
 
   return (
-    <section className="w-full max-w-3xl py-16">
-      <h2 className="mb-6 text-2xl font-bold text-foreground">Últimos videos</h2>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-        {videos.map((video) => (
-          <a
-            key={video.id}
-            href={video.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col gap-2"
-          >
-            <div className="relative aspect-video overflow-hidden rounded-xl border border-border">
-              <Image
-                src={video.thumbnailUrl}
-                alt={video.title}
-                fill
-                className="object-cover transition-transform group-hover:scale-105"
-              />
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      {videos.map((video) => (
+        <a
+          key={video.id}
+          href={video.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex flex-col gap-3"
+        >
+          <div className="relative aspect-video overflow-hidden rounded-xl border border-border">
+            <Image
+              src={video.thumbnailUrl}
+              alt={video.title}
+              fill
+              sizes="(max-width: 640px) 100vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/20">
+              <span className="flex h-12 w-12 scale-90 items-center justify-center rounded-full bg-white/90 text-foreground opacity-0 shadow-lg transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+                ▶
+              </span>
             </div>
-            <p className="text-sm font-medium text-foreground">{video.title}</p>
-          </a>
-        ))}
-      </div>
-    </section>
+          </div>
+          <p className="text-sm font-medium text-foreground transition-colors group-hover:text-accent">
+            {video.title}
+          </p>
+        </a>
+      ))}
+    </div>
   );
 }

@@ -1,29 +1,38 @@
 import Link from "next/link";
+import { siteData } from "@/data/portfolio";
 
 export const metadata = {
   title: "Sobre Olivia Todesco",
   description:
-    "Desarrolladora de software, cofundadora de Nebula Solutions, creadora de contenido, diseñadora UI/UX y actriz.",
+    "Desarrolladora de software, diseñadora UX/UI, creadora de contenido y cofundadora de Nebula Solutions.",
 };
 
 export default function AboutPage() {
-  return (
-    <main className="flex min-h-full flex-1 flex-col items-center justify-center px-6 py-24 text-center">
-      <article className="w-full max-w-2xl space-y-8">
-        <h1 className="text-3xl font-bold text-foreground sm:text-5xl">Sobre mí</h1>
+  const { about } = siteData;
 
-        <div className="space-y-4 text-left text-base leading-7 text-text-muted sm:text-lg">
-          <p className="text-xl font-bold text-foreground sm:text-2xl">
-            Siempre me gustó construir.
+  return (
+    <main className="flex min-h-full flex-1 flex-col items-center justify-center px-6 py-32 text-center">
+      <article className="w-full max-w-2xl space-y-10">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+          {about.title}
+        </h1>
+
+        <blockquote>
+          <p className="text-2xl font-semibold leading-snug text-foreground sm:text-3xl">
+            “{about.quote}”
           </p>
-          <p>Antes eran historias. Después páginas web. Hoy son empresas, productos y contenido.</p>
-          <p>
-            Creo que la tecnología sirve cuando mejora la vida de alguien. Y esa es la idea detrás
-            de todo lo que hago.
-          </p>
+        </blockquote>
+
+        <div className="space-y-5 text-left text-base leading-7 text-muted sm:text-lg">
+          {about.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
 
-        <Link href="/" className="btn-outline">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+        >
           ← Volver al inicio
         </Link>
       </article>

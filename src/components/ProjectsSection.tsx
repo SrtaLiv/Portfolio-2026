@@ -1,115 +1,111 @@
-"use client";
-
-import { useState } from "react";
 import { siteData } from "@/data/portfolio";
+import ScrollReveal from "./ScrollReveal";
+
+const gradientClasses = [
+  "bg-gradient-to-br from-violet-500/20 via-purple-500/20 to-fuchsia-500/20",
+  "bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-violet-500/20",
+  "bg-gradient-to-br from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
+  "bg-gradient-to-br from-orange-500/20 via-amber-500/20 to-yellow-500/20",
+  "bg-gradient-to-br from-rose-500/20 via-pink-500/20 to-fuchsia-500/20",
+  "bg-gradient-to-br from-slate-500/20 via-zinc-500/20 to-neutral-500/20",
+];
 
 export default function ProjectsSection() {
   const { projects } = siteData;
-  const [activeId, setActiveId] = useState<string>(projects.items[0].id);
-  const activeProject = projects.items.find((p) => p.id === activeId)!;
 
   return (
-    <section id="projects" className="w-full px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold text-foreground sm:text-5xl">{projects.title}</h2>
-          <p className="mt-4 text-text-muted">{projects.subtitle}</p>
-        </div>
+    <section id="projects" className="section">
+      <div className="mx-auto max-w-5xl">
+        <ScrollReveal className="mb-16 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+          <div>
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+              {projects.title}
+            </h2>
+            <p className="mt-4 text-muted">{projects.subtitle}</p>
+          </div>
+          <a
+            href={projects.cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline shrink-0"
+          >
+            {projects.cta.text} ↗
+          </a>
+        </ScrollReveal>
 
-        <div className="grid gap-8 lg:grid-cols-12">
-          {/* Project list */}
-          <div className="flex flex-col gap-3 lg:col-span-4">
-            {projects.items.map((project) => (
-              <button
-                key={project.id}
-                onClick={() => setActiveId(project.id)}
-                className={`rounded-2xl border p-4 text-left transition-all ${
-                  activeId === project.id
-                    ? "border-accent-violet/40 bg-accent-violet-soft"
-                    : "border-border bg-surface hover:border-accent-violet/30"
+        <div className="space-y-24">
+          {projects.items.map((project, i) => (
+            <ScrollReveal key={project.id} delay={0.1}>
+              <article
+                className={`group grid items-center gap-10 lg:grid-cols-2 ${
+                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-foreground">{project.name}</span>
-                  <span className="text-xs text-text-muted">{project.country}</span>
+                <div
+                  className={`card relative flex aspect-[4/3] items-center justify-center overflow-hidden ${gradientClasses[i]} ${
+                    i % 2 === 1 ? "lg:order-2" : ""
+                  }`}
+                >
+                  <div className={`absolute inset-0 ${gradientClasses[i]}`} />
+                  <div className="relative text-center transition-transform duration-500 group-hover:scale-105">
+                    <span className="text-6xl font-bold text-foreground/10">
+                      {project.name.slice(0, 2).toUpperCase()}
+                    </span>
+                  </div>
                 </div>
-                <span className="block text-sm text-text-muted">{project.role}</span>
-              </button>
-            ))}
-          </div>
 
-          {/* Project detail */}
-          <div className="card p-6 sm:p-8 lg:col-span-8">
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <h3 className="text-2xl font-bold text-foreground">{activeProject.name}</h3>
-              <span className="tag text-accent-warm">{activeProject.budget}</span>
-              <span className="tag">{activeProject.duration}</span>
-              <span className="tag">{activeProject.country}</span>
-            </div>
+                <div className={i % 2 === 1 ? "lg:order-1" : ""}>
+                  <div className="mb-4 flex flex-wrap items-center gap-2 text-sm text-muted">
+                    <span>🌍 {project.country}</span>
+                    <span>·</span>
+                    <span className="font-medium text-foreground">{project.budget}</span>
+                    <span>·</span>
+                    <span>{project.duration}</span>
+                  </div>
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="space-y-4">
-                <div>
-                  <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent-violet">
-                    Problema
-                  </h4>
-                  <p className="text-sm leading-relaxed text-text-muted">
-                    {activeProject.problem}
-                  </p>
-                </div>
-                <div>
-                  <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent-violet">
-                    Proceso
-                  </h4>
-                  <p className="text-sm leading-relaxed text-text-muted">
-                    {activeProject.process}
-                  </p>
-                </div>
-              </div>
+                  <h3 className="text-2xl font-bold text-foreground sm:text-3xl">
+                    {project.name}
+                  </h3>
+                  <p className="text-sm text-muted">{project.role}</p>
 
-              <div className="space-y-4">
-                <div>
-                  <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent-violet">
-                    Resultado
-                  </h4>
-                  <p className="text-sm leading-relaxed text-text-muted">
-                    {activeProject.result}
-                  </p>
-                </div>
-                <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent-violet">
-                    Stack
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {activeProject.stack.map((tech) => (
+                  <div className="mt-6 space-y-5">
+                    <div>
+                      <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                        Problema
+                      </h4>
+                      <p className="leading-relaxed text-muted">{project.problem}</p>
+                    </div>
+                    <div>
+                      <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                        Solución
+                      </h4>
+                      <p className="leading-relaxed text-muted">{project.solution}</p>
+                    </div>
+                    <div>
+                      <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                        Impacto
+                      </h4>
+                      <p className="leading-relaxed text-muted">{project.impact}</p>
+                    </div>
+                    <div>
+                      <h4 className="mb-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                        Aprendizajes
+                      </h4>
+                      <p className="leading-relaxed text-muted">{project.learnings}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
                       <span key={tech} className="tag">
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
-                {(activeProject.team || activeProject.design) && (
-                  <div className="text-xs text-text-muted">
-                    {activeProject.team && <p>Equipo: {activeProject.team}</p>}
-                    {activeProject.design && <p>Diseño: {activeProject.design}</p>}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {activeProject.link !== "#" && (
-              <div className="mt-8">
-                <a
-                  href={activeProject.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary text-sm"
-                >
-                  Ver proyecto →
-                </a>
-              </div>
-            )}
-          </div>
+              </article>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>

@@ -1,42 +1,63 @@
+"use client";
+
+import { useInView } from "@/hooks/useInView";
 import { siteData } from "@/data/portfolio";
+import ScrollReveal from "./ScrollReveal";
 
 export default function TimelineSection() {
   const { timeline } = siteData;
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.15 });
 
   return (
-    <section className="w-full px-6 py-24">
+    <section id="journey" className="section bg-surface-muted/50">
       <div className="mx-auto max-w-3xl">
-        <h2 className="mb-16 text-center text-3xl font-bold text-foreground sm:text-5xl">
-          {timeline.title}
-        </h2>
+        <ScrollReveal className="mb-16 text-center">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+            {timeline.title}
+          </h2>
+          <p className="mt-4 text-muted">{timeline.subtitle}</p>
+        </ScrollReveal>
 
-        <div className="relative">
-          <div className="absolute left-4 top-0 h-full w-0.5 bg-border sm:left-1/2 sm:-translate-x-1/2" />
+        <div ref={ref} className="relative">
+          {/* Background line */}
+          <div className="absolute left-6 top-0 h-full w-px bg-border sm:left-1/2 sm:-translate-x-1/2" />
+          {/* Animated progress line */}
+          <div
+            className={`absolute left-6 top-0 w-px -translate-x-1/2 bg-accent transition-transform duration-[1500ms] ease-out sm:left-1/2 ${
+              isInView ? "scale-y-100" : "scale-y-0"
+            }`}
+            style={{ height: "100%", transformOrigin: "top" }}
+          />
 
           {timeline.items.map((item, i) => (
-            <div
-              key={item.year + item.label}
-              className={`relative mb-12 flex items-start gap-6 sm:gap-0 ${
-                i % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"
-              }`}
-            >
+            <ScrollReveal key={item.year + item.label} delay={i * 0.1}>
               <div
-                className={`hidden w-1/2 px-8 sm:block ${
-                  i % 2 === 0 ? "text-right" : "text-left"
+                className={`relative mb-10 flex gap-6 sm:gap-0 ${
+                  i % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"
                 }`}
               >
-                <span className="text-sm font-semibold text-accent-violet">{item.year}</span>
-              </div>
+                <div
+                  className={`hidden w-1/2 px-8 sm:flex ${
+                    i % 2 === 0 ? "justify-end text-right" : "justify-start text-left"
+                  }`}
+                >
+                  <span className="text-sm font-bold text-accent">{item.year}</span>
+                </div>
 
-              <div className="absolute left-4 top-1 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-background bg-accent-violet sm:left-1/2" />
+                <div
+                  className={`absolute left-6 top-1.5 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-background bg-accent transition-all duration-500 sm:left-1/2 ${
+                    isInView ? "scale-100 opacity-100 shadow-[0_0_0_6px_rgba(109,40,217,0.15)]" : "scale-0 opacity-0"
+                  }`}
+                  style={{ transitionDelay: `${i * 150}ms` }}
+                />
 
-              <div className="w-full pl-10 sm:w-1/2 sm:pl-8">
-                <span className="text-sm font-semibold text-accent-violet sm:hidden">
-                  {item.year}
-                </span>
-                <p className="text-lg font-medium text-foreground">{item.label}</p>
+                <div className="w-full pl-14 sm:w-1/2 sm:pl-8">
+                  <span className="text-sm font-bold text-accent sm:hidden">{item.year}</span>
+                  <h3 className="text-lg font-semibold text-foreground">{item.label}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">{item.note}</p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
