@@ -2,20 +2,19 @@ export const siteData = {
   nav: {
     name: "Olivia Todesco",
     links: [
-      { label: "Inicio", href: "/" },
-      { label: "Sobre mí", href: "/about" },
-      { label: "Proyectos", href: "/proyectos" },
-      { label: "Contacto", href: "/contacto" },
+      { label: "Proyectos", href: "#projects" },
+      { label: "Sobre mí", href: "#about" },
+      { label: "Contacto", href: "#contact" },
     ],
-    cta: { label: "Hablemos", href: "https://calendly.com/nebulasolutions23/30min" },
+    cta: { label: "Hablemos", href: "https://calendly.com/nebulasolutions23/30min?month=2026-04&date=2026-04-21" },
   },
 
   hero: {
     eyebrow: "Full Stack Developer · UX/UI Designer · Co-founder",
     title: ["Construyo productos", "que conectan personas."],
     description:
-      "Soy Olivia Todesco. Desarrollo software, diseño interfaces, fundé Nebula Solutions y comparto lo que aprendo. Todo es parte del mismo sistema.",
-    primaryCta: { text: "Conocer mi historia", href: "/about" },
+      "Soy Olivia Todesco. Desarrollo software, diseño interfaces y fundé Nebula junto a Santiago. Todo es parte del mismo sistema.",
+    primaryCta: { text: "Conocer mi historia", href: "#about" },
     secondaryCta: { text: "Ver proyectos en Nebula", href: "https://nebulasolutions.com.ar/" },
   },
 
@@ -23,80 +22,7 @@ export const siteData = {
     lines: ["Software.", "Productos.", "Empresas.", "Historias.", "Todo conectado."],
   },
 
-  versions: {
-    title: "Elegí una versión de mí",
-    subtitle: "Cada una es una puerta a un universo diferente.",
-    items: [
-      {
-        id: "developer",
-        emoji: "💻",
-        title: "Full Stack Developer",
-        short: "Código que resuelve problemas de verdad.",
-        description: [
-          "No escribo código por escribir. Me interesa entender el negocio, diseñar la mejor solución y convertir una idea en un producto escalable.",
-          "Disfruto del proceso de pasar de cero a algo que funciona, se entiende y puede crecer.",
-        ],
-        tags: ["Laravel", "React", "Next.js", "Tailwind", "Node", "MySQL", "AWS", "Docker"],
-        cta: { text: "Ver proyectos", href: "/proyectos" },
-      },
-      {
-        id: "cofounder",
-        emoji: "🚀",
-        title: "Co-founder de Nebula Solutions",
-        short: "Construyo empresas, no solo productos.",
-        description: [
-          "En Nebula ayudamos a startups y empresas a transformar procesos en software. Desde MVPs hasta plataformas usadas por miles de usuarios.",
-          "Aprendí a liderar equipos, tomar decisiones técnicas y comerciales, y crecer un negocio de forma sostenible.",
-        ],
-        metrics: [
-          "+20 proyectos entregados",
-          "Clientes en Argentina, España, Francia y EE.UU.",
-          "Equipo de 4 fullstack developers",
-        ],
-        cta: { text: "Conocer Nebula", href: "https://nebulasolutions.com.ar/" },
-      },
-      {
-        id: "designer",
-        emoji: "🎨",
-        title: "Diseñadora UX/UI",
-        short: "Interfaces pensadas primero en personas.",
-        description: [
-          "El código importa, pero la experiencia también. Diseño pantallas que sean intuitivas antes de ser lindas.",
-          "Mezclo herramientas de diseño con criterio técnico: lo que diseño puedo construirlo, y lo que construyo lo diseño pensando en quien lo va a usar.",
-        ],
-        tags: ["Figma", "Design Systems", "Wireframes", "Prototipos", "User Flows"],
-        cta: { text: "Ver proyectos", href: "/proyectos" },
-      },
-      {
-        id: "creator",
-        emoji: "🎥",
-        title: "Creadora de contenido",
-        short: "Enseñar obliga a entender mejor.",
-        description: [
-          "Comparto programación, inteligencia artificial y desarrollo de productos para miles de personas.",
-          "Crear contenido no es solo marketing: es una forma de aprender en público, conectar con otros builders y construir una marca personal honesta.",
-        ],
-        tags: ["Instagram", "YouTube", "Charlas", "Colaboraciones"],
-        cta: { text: "Ver contenido", href: "https://www.youtube.com/@oliviatodesco" },
-      },
-      {
-        id: "entrepreneur",
-        emoji: "🧭",
-        title: "Emprendedora",
-        short: "Siempre construyendo la siguiente idea.",
-        description: [
-          "Además de Nebula, trabajo en productos propios. Me gusta identificar problemas reales, validar soluciones rápido y lanzar.",
-          "Actuar me enseñó a comunicar, escuchar y contar historias. Hoy uso eso para presentar ideas, vender proyectos y hablar de tecnología de forma más humana.",
-        ],
-        tags: ["Producto", "Validación", "Lanzamiento", "Storytelling"],
-        cta: { text: "Ver recorrido", href: "/about" },
-      },
-    ],
-  },
-
   connection: {
-    title: "Cómo se conecta todo",
-    subtitle: "No son habilidades separadas. Es un ecosistema.",
     steps: [
       { label: "Contenido", note: "Aprender en público" },
       { label: "Marca Personal", note: "Conectar con la comunidad" },
@@ -111,67 +37,13 @@ export const siteData = {
   projects: {
     title: "Proyectos seleccionados",
     subtitle: "Casos reales construidos con Nebula Solutions.",
-    cta: { text: "Ver todos en Nebula", href: "https://nebulasolutions.com.ar/" },
+    cta: { text: "Ver todos los proyectos", href: "https://nebulasolutions.com.ar/es/projects" },
     items: [
-      {
-        id: "my-office-taxes",
-        name: "My Office Taxes",
-        role: "Plataforma de firmas digitales",
-        country: "Estados Unidos",
-        budget: "13.000 USD",
-        duration: "3–4 meses",
-        stack: ["Laravel", "Inertia", "Tailwind", "MySQL", "Stripe", "Square"],
-        team: "Santiago",
-        problem: "Una firma de taxes necesitaba digitalizar firmas, documentos y comunicación con clientes.",
-        solution:
-          "Construimos un sistema completo con firmas digitales verificables, chat en tiempo real, facturación automatizada y flujos de trabajo del personal.",
-        impact:
-          "Una plataforma moderna y responsive que centraliza documentos, tareas y pagos en un solo lugar.",
-        learnings:
-          "Aprendí a diseñar flujos complejos manteniendo la interfaz simple, y a equilibrar seguridad con facilidad de uso.",
-      },
-      {
-        id: "epsilon",
-        name: "Epsilon",
-        role: "Lector de anime y manga",
-        country: "Francia",
-        budget: "7.000 USD",
-        duration: "En evolución",
-        stack: ["Laravel", "Inertia", "Tailwind", "MySQL"],
-        team: "Santiago",
-        problem: "Crear una plataforma moderna para visualizar anime y manga con miles de capítulos.",
-        solution:
-          "Implementamos scraping de más de 100.000 capítulos, favoritos, historial, recomendaciones, contenido por suscripción y métricas internas.",
-        impact:
-          "Aplicación responsive con diseño UX/UI propio, seguridad avanzada y escalabilidad para miles de usuarios.",
-        learnings:
-          "Mejoré mi comprensión de rendimiento a escala, scraping ético y arquitectura de contenido masivo.",
-        link: "https://epsilonsoft.to/",
-      },
-      {
-        id: "fitness-pwa",
-        name: "Plataforma Fitness",
-        role: "PWA de entrenamiento y nutrición",
-        country: "España",
-        budget: "8.500 USD",
-        duration: "3 meses",
-        stack: ["Laravel", "Inertia", "MySQL"],
-        team: "Olivia, Tomás, Luciano, Santiago",
-        design: "Olivia",
-        problem: "Un cliente con gran volumen de usuarios necesitaba gestionar planes de entrenamiento y nutrición.",
-        solution:
-          "Construimos roles de admin, coach y cliente, con flujos claros para asignar planes, seguir progresos y escalar la operación.",
-        impact:
-          "Una PWA funcional y escalable que permite administrar usuarios, planes y contenido desde un panel central.",
-        learnings:
-          "Entendí cómo diseñar para usuarios recurrentes y cómo estructurar permisos sin complicar la experiencia.",
-      },
       {
         id: "sense-patagonia",
         name: "Sense Patagonia",
         role: "Sistema de reservas turísticas",
         country: "Argentina",
-        budget: "1.400 USD",
         duration: "4 meses",
         stack: ["Laravel", "Inertia", "MySQL"],
         team: "Olivia, Tomás, Luciano",
@@ -185,38 +57,21 @@ export const siteData = {
           "Aprendí a priorizar funcionalidades según el contexto del negocio y a diseñar para operadores no técnicos.",
       },
       {
-        id: "laboriosos",
-        name: "Laboriosos",
-        role: "Marketplace de servicios profesionales",
-        country: "República Dominicana",
-        budget: "6.000+ USD",
-        duration: "En evolución",
-        stack: ["Laravel", "Inertia", "Stripe", "MySQL"],
-        team: "Nebula Solutions",
-        problem: "Crear una plataforma donde profesionales paguen por publicar servicios y otros usuarios puedan contratarlos.",
+        id: "epic-bariloche",
+        name: "Epic Bariloche",
+        role: "Sistema de reservas turísticas",
+        country: "Argentina",
+        duration: "2 semanas",
+        stack: ["Laravel", "Inertia", "MySQL"],
+        team: "Olivia, Tomás, Luciano",
+        problem:
+          "Un operador turístico de Bariloche necesitaba vender excursiones y actividades online sin depender de WhatsApp para cada reserva.",
         solution:
-          "Implementamos perfiles con publicaciones, home, pasarela de pagos con Stripe, auditorías de seguridad y migración de servidor.",
+          "Desarrollamos en dos semanas una plataforma de reservas con catálogo de excursiones, calendario de disponibilidad y confirmación automática por email.",
         impact:
-          "Un marketplace funcional con pagos integrados, perfiles profesionales y administración de publicaciones.",
+          "Un sitio funcional y liviano que le permite al operador recibir reservas 24/7 sin intervención manual.",
         learnings:
-          "Mejoré mi visión sobre modelos de negocio marketplace, flujos de pago y seguridad en transacciones.",
-      },
-      {
-        id: "figuras",
-        name: "Figuras",
-        role: "Marketplace de figuras coleccionables",
-        country: "Internacional",
-        budget: "20.000 USD",
-        duration: "2026",
-        stack: ["Laravel", "Inertia", "Tailwind", "MySQL", "Stripe"],
-        team: "Santiago",
-        problem: "Construir un marketplace seguro para compra/venta internacional de figuras coleccionables.",
-        solution:
-          "Diseñamos catálogo, checkout con Stripe, sistema de escrow, bandeja de pedidos por país, claims manuales y flujo formal de disputas.",
-        impact:
-          "Una plataforma preparada para escalar a Fase II con logística, etiquetas y tarifas fijas por país.",
-        learnings:
-          "Aprendí sobre complejidad de pagos internacionales, resolución de disputas y diseño de sistemas de confianza.",
+          "Aprendí a priorizar el alcance bajo un plazo muy ajustado, enfocándome en lo esencial para lanzar rápido.",
       },
     ],
   },
@@ -225,12 +80,10 @@ export const siteData = {
     title: "Mi recorrido",
     subtitle: "Hitos que explican cómo llegué hasta acá.",
     items: [
-      { year: "2021", label: "Empiezo a programar.", note: "El primer contacto con código cambia todo." },
-      { year: "2022", label: "Creo contenido.", note: "Aprender en público se convierte en mi forma de crecer." },
-      { year: "2025", label: "Fundo Nebula Solutions.", note: "Junto a Santiago, Tomás y Luciano armamos el equipo." },
-      { year: "2025", label: "Primer cliente internacional.", note: "Pasamos de proyectos locales a trabajar con empresas del exterior." },
-      { year: "2025", label: "Proyecto de 13.000 USD.", note: "My Office Taxes: el proyecto más grande hasta ese momento." },
-      { year: "2026", label: "Lanzamiento de Tourly.", note: "Mi primer producto propio en el mercado." },
+      { year: "2023", label: "Empiezo a programar.", note: "Arranco con un curso de creación de videojuegos: el primer contacto con código cambia todo." },
+      { year: "2024", label: "Creo contenido.", note: "Aprender en público se convierte en mi forma de crecer." },
+      { year: "2025", label: "Fundo Nebula Solutions.", note: "Junto a Santiago armamos el equipo y entregamos más de 15 proyectos en 6 países distintos." },
+      { year: "2026", label: "Lanzamiento de Tourly.", note: "Seguimos con Nebula y sacamos nuestro propio SaaS de turismo." },
     ],
   },
 
@@ -245,10 +98,10 @@ export const siteData = {
       title: "Cómo llegué hasta acá",
       paragraphs: [
         "Mi camino empezó lejos del código. De chica me gustaba crear historias, entender a las personas y encontrar formas de comunicar ideas. Esa curiosidad terminó llevándome a la tecnología, donde descubrí que construir productos digitales no era tan diferente: se trata de entender un problema, diseñar una solución y contarla de forma clara.",
-        "En 2021 escribí mis primeras líneas de código. No fue amor a primera vista, pero sí una fascinación creciente: me di cuenta de que podía crear cosas que otras personas usaban de verdad. Ese año marco el inicio de una obsesión por aprender en público.",
-        "Un año después empecé a compartir lo que aprendía en redes. Enseñar me obligó a entender mejor, a simplificar conceptos y a conectar con una comunidad de personas que también estaban construyendo. Ese hábito de aprender en público se convirtió en el motor de todo lo que vino después.",
-        "En 2025, junto a Santiago, Tomás y Luciano, fundamos Nebula Solutions. Lo que empezó como un grupo de desarrolladores que querían hacer proyectos interesantes, se convirtió en una empresa que ayuda a startups y compañías de Argentina, España, Francia y Estados Unidos a transformar procesos en software.",
-        "Hoy sigo programando, diseñando, liderando proyectos y creando contenido. También estoy construyendo mis propios productos, como Tourly, donde pongo en práctica todo lo aprendido trabajando con clientes.",
+        "En 2023 escribí mis primeras líneas de código, arrancando con un curso de creación de videojuegos. No fue amor a primera vista, pero sí una fascinación creciente: me di cuenta de que podía crear cosas que otras personas usaban de verdad.",
+        "Un año después, en 2024, empecé a compartir lo que aprendía en redes. Enseñar me obligó a entender mejor, a simplificar conceptos y a conectar con una comunidad de personas que también estaban construyendo. Ese hábito de aprender en público se convirtió en el motor de todo lo que vino después.",
+        "En 2025, junto a Santiago, fundamos Nebula Solutions. Ese mismo año entregamos más de 15 proyectos en 6 países distintos, transformando procesos de startups y empresas en software real.",
+        "Hoy sigo programando, diseñando, liderando proyectos y creando contenido. En 2026 seguimos con Nebula y además estamos lanzando Tourly, nuestro propio SaaS de turismo, donde pongo en práctica todo lo aprendido trabajando con clientes.",
       ],
     },
     values: {
@@ -305,7 +158,7 @@ export const siteData = {
     cta: {
       title: "¿Trabajamos juntos?",
       description: "Si tenés una idea, un negocio o simplemente querés charlar sobre tecnología, escribime.",
-      button: { text: "Agendar una llamada", href: "https://calendly.com/nebulasolutions23/30min" },
+      button: { text: "Agendar una llamada", href: "https://calendly.com/nebulasolutions23/30min?month=2026-04&date=2026-04-21" },
     },
   },
 
@@ -314,11 +167,80 @@ export const siteData = {
     subtitle: "Contenido sobre programación, producto, diseño y el día a día de construir cosas.",
   },
 
+  themeContent: {
+    creative: {
+      eyebrow: "Modo diseñadora",
+      processTitle: "Cómo se conecta todo",
+      processSubtitle: "No son habilidades separadas. Es un ecosistema.",
+      toolsTitle: "Con qué trabajo",
+      tools: ["Figma", "CapCut", "Canva", "Adobe Premiere", "Notion"],
+      helpTitle: "En qué puedo ayudarte",
+      help: [
+        {
+          title: "UX/UI",
+          description: "Diseño interfaces claras, usables y con identidad propia.",
+        },
+        {
+          title: "Portfolio",
+          description: "Armamos tu portfolio o el de tu marca personal.",
+        },
+        {
+          title: "Colaboraciones con marcas",
+          description: "Contenido y campañas pensadas para conectar de verdad.",
+        },
+      ],
+    },
+    tech: {
+      eyebrow: "Modo developer",
+      processTitle: "Cómo se conecta el stack",
+      processSubtitle: "No son piezas sueltas: es un pipeline completo.",
+      toolsTitle: "Stack",
+      tools: ["VS Code", "Claude", "Laravel", "React", "PHP", "Inertia", "MySQL", "PostgreSQL"],
+      helpTitle: "En qué puedo ayudarte",
+      help: [
+        {
+          title: "MVP",
+          description: "De cero a producto funcional, listo para validar.",
+        },
+        {
+          title: "Proyecto a medida",
+          description: "Software hecho para tu negocio, no una plantilla genérica.",
+        },
+        {
+          title: "Integraciones y APIs",
+          description: "Conecto tu producto con pagos, terceros y automatizaciones.",
+        },
+      ],
+    },
+    corporate: {
+      eyebrow: "Modo ejecutiva",
+      processTitle: "Cómo trabajo",
+      processSubtitle: "Un proceso simple, pensado para escalar.",
+      toolsTitle: "Con qué trabajo",
+      tools: ["Comunicación clara", "Google Meet", "Habilidades blandas", "Gestión de equipos", "Toma de decisiones"],
+      helpTitle: "En qué puedo ayudarte",
+      help: [
+        {
+          title: "Consultoría de producto y tech",
+          description: "Decisiones de negocio y tecnología alineadas.",
+        },
+        {
+          title: "Liderazgo de equipos",
+          description: "Armado y gestión de equipos de desarrollo.",
+        },
+        {
+          title: "Comunicación ejecutiva",
+          description: "Presentaciones y pitches claros para inversores y clientes.",
+        },
+      ],
+    },
+  },
+
   contact: {
     title: "Si llegaste hasta acá, probablemente tengamos mucho de qué hablar.",
     subtitle: "Si tenés una idea, un negocio o simplemente querés charlar sobre tecnología, escribime.",
-    email: "hello@oliviatodesco.com",
-    cta: { text: "Agendar una llamada", href: "https://calendly.com/nebulasolutions23/30min" },
+    email: "anaoliviatodesco@gmail.com",
+    cta: { text: "Agendar una llamada", href: "https://calendly.com/nebulasolutions23/30min?month=2026-04&date=2026-04-21" },
     social: [
       { name: "Instagram", href: "https://www.instagram.com/oliviatodesco/" },
       { name: "LinkedIn", href: "https://www.linkedin.com/in/anaoliviatodesco/" },

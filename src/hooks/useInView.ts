@@ -10,7 +10,7 @@ interface UseInViewOptions {
 
 export function useInView<T extends HTMLElement = HTMLDivElement>({
   threshold = 0.15,
-  rootMargin = "0px 0px -80px 0px",
+  rootMargin = "0px 0px -10% 0px",
   triggerOnce = true,
 }: UseInViewOptions = {}) {
   const ref = useRef<T>(null);
@@ -34,7 +34,14 @@ export function useInView<T extends HTMLElement = HTMLDivElement>({
 
     observer.observe(element);
 
-    return () => observer.disconnect();
+    // safety net: never leave content permanently hidden if the observer
+    // misses it (fast scroll, tab backgrounded on load, etc.)
+    const fallback = window.setTimeout(() => setIsInView(true), 1500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, [threshold, rootMargin, triggerOnce]);
 
   return { ref, isInView };

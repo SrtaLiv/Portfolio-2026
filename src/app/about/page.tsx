@@ -17,14 +17,9 @@ export default function AboutPage() {
       {/* Hero de la página */}
       <section className="relative flex min-h-[70vh] w-full flex-col items-center justify-center px-6 pb-12 pt-32 text-center">
         <div className="mx-auto max-w-4xl space-y-8">
-          <ScrollReveal>
-            <div className="flex justify-center">
-              <Avatar />
-            </div>
-          </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
+            <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-6xl"> 
               {about.title}
             </h1>
           </ScrollReveal>

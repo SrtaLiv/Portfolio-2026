@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 import { siteData } from "@/data/portfolio";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Navbar() {
   const { nav } = siteData;
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -52,25 +52,16 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden items-center gap-1 md:flex">
-          {nav.links.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`relative rounded-lg px-3 py-2 text-sm transition-colors ${
-                  isActive
-                    ? "font-medium text-foreground"
-                    : "text-muted hover:bg-surface-muted hover:text-foreground"
-                }`}
-              >
-                {link.label}
-                {isActive && (
-                  <span className="absolute bottom-1 left-3 right-3 h-px bg-accent" />
-                )}
-              </Link>
-            );
-          })}
+          {nav.links.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-muted hover:text-foreground"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <ThemeSwitcher className="ml-4" />
           <a
             href={nav.cta.href}
             target="_blank"
@@ -88,7 +79,7 @@ export default function Navbar() {
           aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={mobileOpen}
         >
-          {mobileOpen ? "✕" : "☰"}
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
@@ -99,23 +90,17 @@ export default function Navbar() {
           className="border-b border-border bg-background px-6 pb-4 md:hidden"
         >
           <div className="flex flex-col gap-1">
-            {nav.links.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`rounded-lg px-3 py-2 text-sm ${
-                    isActive
-                      ? "font-medium text-foreground"
-                      : "text-muted hover:bg-surface-muted hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+            {nav.links.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="rounded-lg px-3 py-2 text-sm text-muted hover:bg-surface-muted hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <ThemeSwitcher className="mt-2 self-start" />
             <a
               href={nav.cta.href}
               target="_blank"

@@ -1,3 +1,4 @@
+import { ChevronRight, Globe } from "lucide-react";
 import { siteData } from "@/data/portfolio";
 import ScrollReveal from "./ScrollReveal";
 
@@ -33,20 +34,25 @@ export default function ProjectsSection() {
           </a>
         </ScrollReveal>
 
-        <div className="space-y-24">
+        <div className="relative lg:block">
+          <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 scrollbar-none lg:block lg:snap-none lg:gap-0 lg:space-y-24 lg:overflow-visible lg:pb-0">
           {projects.items.map((project, i) => (
-            <ScrollReveal key={project.id} delay={0.1}>
+            <ScrollReveal
+              key={project.id}
+              delay={0.1}
+              className="w-[85vw] shrink-0 snap-start lg:w-auto lg:shrink"
+            >
               <article
                 className={`group grid items-center gap-10 lg:grid-cols-2 ${
                   i % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
                 <div
-                  className={`card relative flex aspect-[4/3] items-center justify-center overflow-hidden ${gradientClasses[i]} ${
+                  className={`card project-visual relative flex aspect-[4/3] items-center justify-center overflow-hidden ${gradientClasses[i]} ${
                     i % 2 === 1 ? "lg:order-2" : ""
                   }`}
                 >
-                  <div className={`absolute inset-0 ${gradientClasses[i]}`} />
+                  <div className={`project-visual-bg absolute inset-0 ${gradientClasses[i]}`} />
                   <div className="relative text-center transition-transform duration-500 group-hover:scale-105">
                     <span className="text-6xl font-bold text-foreground/10">
                       {project.name.slice(0, 2).toUpperCase()}
@@ -56,9 +62,10 @@ export default function ProjectsSection() {
 
                 <div className={i % 2 === 1 ? "lg:order-1" : ""}>
                   <div className="mb-4 flex flex-wrap items-center gap-2 text-sm text-muted">
-                    <span>🌍 {project.country}</span>
-                    <span>·</span>
-                    <span className="font-medium text-foreground">{project.budget}</span>
+                    <span className="inline-flex items-center gap-1">
+                      <Globe className="h-3.5 w-3.5" strokeWidth={2} />
+                      {project.country}
+                    </span>
                     <span>·</span>
                     <span>{project.duration}</span>
                   </div>
@@ -106,6 +113,14 @@ export default function ProjectsSection() {
               </article>
             </ScrollReveal>
           ))}
+        </div>
+
+        <div
+          className="pointer-events-none absolute right-0 top-0 flex h-[calc(100%-1rem)] w-16 items-center justify-end bg-linear-to-l from-background to-transparent lg:hidden"
+          aria-hidden="true"
+        >
+          <ChevronRight className="h-6 w-6 animate-swipe-hint text-accent" strokeWidth={2.5} />
+        </div>
         </div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { Camera, Video } from "lucide-react";
 import { siteData } from "@/data/portfolio";
 import LatestVideos from "./LatestVideos";
 import InstagramFeed from "./InstagramFeed";
@@ -18,7 +19,7 @@ export default function ContentSection() {
 
         <ScrollReveal delay={0.1}>
           <div className="mb-4 flex items-center gap-3">
-            <span className="text-xl">🎥</span>
+            <Video className="h-5 w-5 text-accent" strokeWidth={2} />
             <h3 className="text-lg font-semibold text-foreground">Últimos videos</h3>
           </div>
           <LatestVideos />
@@ -26,7 +27,7 @@ export default function ContentSection() {
 
         <ScrollReveal delay={0.2}>
           <div className="mb-4 mt-16 flex items-center gap-3">
-            <span className="text-xl">📸</span>
+            <Camera className="h-5 w-5 text-accent" strokeWidth={2} />
             <h3 className="text-lg font-semibold text-foreground">Instagram</h3>
           </div>
           <InstagramFeed />

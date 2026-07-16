@@ -30,21 +30,21 @@ export default async function LatestVideos() {
   if (videos.length === 0) return null;
 
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+    <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 scrollbar-none sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0">
       {videos.map((video) => (
         <a
           key={video.id}
           href={video.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-col gap-3"
+          className="group flex w-[75vw] shrink-0 snap-start flex-col gap-3 sm:w-auto sm:shrink"
         >
           <div className="relative aspect-video overflow-hidden rounded-xl border border-border">
             <Image
               src={video.thumbnailUrl}
               alt={video.title}
               fill
-              sizes="(max-width: 640px) 100vw, 33vw"
+              sizes="(max-width: 640px) 75vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/20">
